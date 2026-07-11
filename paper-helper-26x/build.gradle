@@ -1,0 +1,42 @@
+apply plugin: 'java'
+apply plugin: 'io.papermc.paperweight.userdev'
+
+configurations {
+    paperHelper
+}
+
+artifacts {
+    paperHelper(tasks.shadowJar.archiveFile) { builtBy(tasks.shadowJar) }
+}
+
+tasks.named("reobfJar") {
+    enabled = false
+}
+
+eclipse {
+    project {
+        name = "Dynmap(Paper-26.x)"
+    }
+}
+
+description = 'paper-helper-26.x'
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_25
+    targetCompatibility = JavaVersion.VERSION_25
+}
+
+repositories {
+    maven { url "https://repo.papermc.io/repository/maven-public/" }
+}
+
+dependencies {
+    // Paper 26.2 alpha dev-bundle metadata omits this version (paper-api imports adventure-bom 5.2.0)
+    constraints {
+        implementation('net.kyori:adventure-text-serializer-ansi:5.2.0')
+    }
+    implementation project(':bukkit-helper')
+    implementation project(':dynmap-api')
+    implementation project(path: ':DynmapCore', configuration: 'shadow')
+    paperweight.paperDevBundle("26.2.build.56-alpha")
+}
