@@ -31,12 +31,8 @@ repositories {
 }
 
 dependencies {
-    // Paper 26.2 alpha dev-bundle metadata omits this version (paper-api imports adventure-bom 5.2.0)
-    constraints {
-        implementation('net.kyori:adventure-text-serializer-ansi:5.2.0')
-    }
     implementation project(':bukkit-helper')
     implementation project(':dynmap-api')
     implementation project(path: ':DynmapCore', configuration: 'shadow')
-    paperweight.paperDevBundle("26.2.build.56-alpha")
+    paperweight.paperDevBundle("26.3.build.169-beta")
 }
