@@ -4730,3 +4730,8 @@ modellist:id=%dropper,state=facing:down,box=0.000000/0.000000/0.000000:16.000000
 
 # Copper chests
 [1.21.9-]customblock:id=copper_chest,id=exposed_copper_chest,id=weathered_copper_chest,id=oxidized_copper_chest,id=waxed_copper_chest,id=waxed_exposed_copper_chest,id=waxed_weathered_copper_chest,id=waxed_oxidized_copper_chest,class=org.dynmap.hdmap.renderer.ChestStateRenderer,doublechest=true
+
+# Cinnabar and sulfur stairs (26.2)
+[26.2-]customblock:id=%cinnabar_stairs,id=%cinnabar_brick_stairs,id=%polished_cinnabar_stairs,id=%sulfur_stairs,id=%sulfur_brick_stairs,id=%polished_sulfur_stairs,class=org.dynmap.hdmap.renderer.StairStateRenderer
+# Wool, concrete and poplar stairs (26.3)
+[26.3-]customblock:id=%white_wool_stairs,id=%white_concrete_stairs,id=%orange_wool_stairs,id=%orange_concrete_stairs,id=%magenta_wool_stairs,id=%magenta_concrete_stairs,id=%light_blue_wool_stairs,id=%light_blue_concrete_stairs,id=%yellow_wool_stairs,id=%yellow_concrete_stairs,id=%lime_wool_stairs,id=%lime_concrete_stairs,id=%pink_wool_stairs,id=%pink_concrete_stairs,id=%gray_wool_stairs,id=%gray_concrete_stairs,id=%light_gray_wool_stairs,id=%light_gray_concrete_stairs,id=%cyan_wool_stairs,id=%cyan_concrete_stairs,id=%purple_wool_stairs,id=%purple_concrete_stairs,id=%blue_wool_stairs,id=%blue_concrete_stairs,id=%brown_wool_stairs,id=%brown_concrete_stairs,id=%green_wool_stairs,id=%green_concrete_stairs,id=%red_wool_stairs,id=%red_concrete_stairs,id=%black_wool_stairs,id=%black_concrete_stairs,id=%poplar_stairs,class=org.dynmap.hdmap.renderer.StairStateRenderer
