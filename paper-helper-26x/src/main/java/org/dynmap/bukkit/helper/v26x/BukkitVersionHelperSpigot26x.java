@@ -151,9 +151,10 @@ public class BukkitVersionHelperSpigot26x extends BukkitVersionHelper {
 			}
 			int lightAtten = bd.getLightDampening();
 			bld.setBaseState(lastbs).setStateIndex(idx).setBlockName(bname).setStateName(sb).setAttenuatesLight(lightAtten);
+			if (bd.getSoundType() != null) { bld.setMaterial(bd.getSoundType().toString()); }
 			if (bd.isSolid()) { bld.setSolid(); }
 			if (bd.isAir()) { bld.setAir(); }
-			if (bd.is(BlockTags.OVERWORLD_NATURAL_LOGS)) { bld.setLog(); }
+			if (bd.is(BlockTags.LOGS)) { bld.setLog(); }
 			if (bd.is(BlockTags.LEAVES)) { bld.setLeaves(); }
 			if (!bd.getFluidState().isEmpty() && !(bd.getBlock() instanceof LiquidBlock)) {
 				bld.setWaterlogged();

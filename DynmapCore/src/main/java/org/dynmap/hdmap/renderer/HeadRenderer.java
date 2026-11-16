@@ -23,7 +23,7 @@ public class HeadRenderer extends CustomRenderer {
 
         ArrayList<RenderPatch> list = new ArrayList<>();
         list.add(rpf.getPatch(0.75, 0.0, 0.25, 0.25, 0.0, 0.25, 0.75, 0.0, 0.75, 0, 1, 0, 1, SideVisible.TOP, 0));
-        list.add(rpf.getPatch(0.75, 0.5, 0.25, 0.25, 0.5, 0.25, 0.75, 0.5, 0.75, 0, 1, 0, 1, SideVisible.TOP, 0));
+        list.add(rpf.getPatch(0.25, 0.5, 0.25, 0.75, 0.5, 0.25, 0.25, 0.5, 0.75, 0, 1, 0, 1, SideVisible.TOP, 0));
         RenderPatch side = rpf.getPatch(0.75, 0.0, 0.25, 0.25, 0.0, 0.25, 0.75, 0.5, 0.25, 0, 1, 0, 1, SideVisible.TOP, 0);
         RenderPatch side2 = rpf.getRotatedPatch(side, 0, 90, 0, 0);
         RenderPatch side3 = rpf.getRotatedPatch(side, 0, 180, 0, 0);
@@ -45,21 +45,17 @@ public class HeadRenderer extends CustomRenderer {
     
     @Override
     public RenderPatch[] getRenderPatchList(MapDataContext ctx) {
-    	int idx = ctx.getBlockType().stateIndex;
-        while(idx < 0) idx += NUM_DIRECTIONS; // Normalize (bad values from some mods)
-        if(idx < meshes.length) {
-            if(meshes[idx] == null) {
-                RenderPatchFactory rpf = ctx.getPatchFactory();
-                RenderPatch[] rp = new RenderPatch[basemesh.length];
-                for(int i = 0; i < rp.length; i++) {
-                    rp[i] = rpf.getRotatedPatch(basemesh[i], 0, 45*idx/2, 0, faces[i]);
-                }
-                meshes[idx] = rp;
+        // powered=true/false each contains the same 16 rotations.
+        int idx = ctx.getBlockType().stateIndex & (NUM_DIRECTIONS - 1);
+        if(meshes[idx] == null) {
+            RenderPatchFactory rpf = ctx.getPatchFactory();
+            RenderPatch[] rp = new RenderPatch[basemesh.length];
+            for(int i = 0; i < rp.length; i++) {
+                rp[i] = rpf.getRotatedPatch(basemesh[i], 0, 22.5 * idx, 0, faces[i]);
             }
-            return meshes[idx];
+            meshes[idx] = rp;
         }
-        else
-            return meshes[0];
+        return meshes[idx];
     }
     @Override
     public boolean isOnlyBlockStateSensitive() {
